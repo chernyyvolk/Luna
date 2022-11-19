@@ -1,0 +1,30 @@
+{
+  "name": "luna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devrun": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chernyyvolk/Luna-Artificial-Intelligence.git"
+  },
+  "keywords": [],
+  "author": "Chernyy volk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chernyyvolk/Luna-Artificial-Intelligence/issues"
+  },
+  "homepage": "https://github.com/chernyyvolk/Luna-Artificial-Intelligence#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "type": "module"
+}
