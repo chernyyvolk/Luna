@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 import { Client, GatewayIntentBits, Routes } from "discord.js";
 import { REST } from "@discordjs/rest";
+import requestSupport from "./commands/requestSupport.js";
+import rolesCommand from "./commands/roles.js";
 
 config();
 
@@ -19,24 +21,30 @@ const client = new Client({ intents: [
 
 client.on("ready", () => { console.log(`${client.user.tag}/(${client.user.id}) has initialized. Awaiting operating parameters...`); })
 
+
+client.on('interactionCreate', (interaction) => {
+
+  if (interaction.isChatInputCommand()) {
+    console.log('hello friend');
+    interaction.reply({ content: 'Request has been recieved...' });
+  }
+
+});
+
+
 async function main() {
 
-const commands = [
-  {
-    name: 'ping',
-    description: 'Pong',
-  },
-];
+    const commands = [requestSupport, rolesCommand];
 
-  try{
-    console.log('Started refreshing application (/) commands.');
-    await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
-      body: commands,
-    });
-    client.login(TOKEN);
-  } catch (err) {
-    console.log(err);
-  }
+      try{
+        console.log('Started refreshing application (/) commands.');
+        await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
+          body: commands,
+        });
+        client.login(TOKEN);
+      } catch (err) {
+        console.log(err);
+      }
 }
 
 main();
